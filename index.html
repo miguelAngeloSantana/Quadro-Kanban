@@ -7,6 +7,58 @@
     <title>Quadro Kanbam</title>
 </head>
 <body>
+    <header>
+        <div class="conteiner">
+            <div class="menu">
+                <nav>
+                    <h1>Projeto Kanban</h1>
+                    <button class="btn">Adicionar um campo novo</button>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <main>
+        <div class="conteiner">
+            <div class="conteiner-main">
+                <div class="column column-todo">
+                    <div class="column--row">
+                        <span>A fazer</span>
+                        <img src="ASSETS/imagens/Todo-icon.jpeg" alt="Icone de um checklist vazio">
+                    </div>
+                    <div class="add-card-todo"></div>
+                    <form id="new_card_todo">
+                        <input type="text" id="input_card_todo" placeholder="Escreva uma tarefa" />
+                        <button type="submit">colocar</button>
+                    </form>
+                </div>
+
+                <div class="column column-doing">
+                    <div class="column--row">
+                        <span>Fazendo</span>
+                        <img src="ASSETS/imagens/doing.png" alt="Icone de uma ambulheta">
+                    </div>
+                    <div class="add-card-doing"></div>
+                    <form id="new_card_doing">
+                        <input type="text" id="input_card_doing" placeholder="Escreva uma tarefa" />
+                        <button type="submit">colocar</button>
+                    </form>
+                </div>
+
+                <div class="column column-done">
+                    <div class="column--row">
+                        <span>Concluídos</span>
+                        <img src="ASSETS/imagens/done.png" alt="Icone de um checklist com as listas marcads">
+                    </div>
+                    <div class="add-card-done"></div>
+                    <form id="new_card_done">
+                        <input type="text" id="input_card_done" placeholder="Escreva uma tarefa" />
+                        <button type="submit">colocar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./ASSETS/JS/script.js"></script>
 </body>
 </html>

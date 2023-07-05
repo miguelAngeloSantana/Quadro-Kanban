@@ -1,0 +1,90 @@
+:root {
+    --background-body: #dcdcdc;
+    --background-nav: #FFFAFA;
+    --background-btn: #D3D3D3;
+    --background-btn--column: #C0C0C0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    cursor: pointer; 
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--background-btn);
+    font-weight: bold;
+}
+
+body {
+    background-color: var(--background-body);
+}
+
+.conteiner {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu {
+    margin-top: 8px;
+    margin-bottom: 14px;
+    padding: 8px 5px 0;
+    height: 60px;
+    background-color: var(--background-nav);
+}
+
+.menu nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.conteiner-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.conteiner-main .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+    background-color: var(--background-nav);
+}
+
+.conteiner-main .column .column--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+}
+
+.conteiner-main .column .column--row span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 8px;
+}
+
+.conteiner-main .column img {
+    width: 20%;
+}
+
+.conteiner-main .column.column-todo{
+    padding-top: 15px;
+}
+
+.conteiner-main .column .btn-column {
+    background-color: var(--background-btn--column);
+    margin-bottom: 20px;
+}
