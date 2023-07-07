@@ -3,6 +3,8 @@
     --background-nav: #FFFAFA;
     --background-btn: #D3D3D3;
     --background-btn--column: #C0C0C0;
+
+    --border-form-column: 1px solid #000;
 }
 
 * {
@@ -84,7 +86,46 @@ body {
     padding-top: 15px;
 }
 
+/* .conteiner-main .column.column-todo,.column-doing,.column-todo .add-card-todo {
+    background-color: green;
+} */
+/*.conteiner-main .column.column-todo .add-card-todo .ca{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
+} */
+
 .conteiner-main .column .btn-column {
     background-color: var(--background-btn--column);
     margin-bottom: 20px;
 }
+
+.conteiner-main .column form {
+    margin-bottom: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+}
+
+.conteiner-main .column form input {
+    padding: 7px 10px;
+    border-radius: 25px;
+    border: var(--border-form-column);
+    background-color: transparent;
+    display: none;
+}
+
+.conteiner-main .column form .btn-form {
+    border-radius: 20px;
+    padding: 10px 13px;
+    border: var(--border-form-column);
+    background-color: var(--background-btn);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+
