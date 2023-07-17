@@ -1,14 +1,12 @@
 let columnTodo = window.document.querySelector(".add-card-todo");
 let columnDoing = window.document.querySelector(".add-card-doing");
 let columnDone = window.document.querySelector(".add-card-done");
-let btnFormTodo = window.document.querySelectorAll(".btn-form");
 const form_card_todo = window.document.getElementById("new_card_todo");
 const form_card_doing = window.document.getElementById("new_card_doing");
 const form_card_done = window.document.getElementById("new_card_done");
 
-let listCard = [];
-
 function AdicionarCard(vl, column) {
+    let listCard = [];
     listCard.push(vl);
     let img = document.createElement("img");
     let imgSrc = img.src="./ASSETS/imagens/remover.png";
@@ -16,42 +14,25 @@ function AdicionarCard(vl, column) {
         return `
         <div class="card-info">
             <span>${vl}</span>
-            <img src="${imgSrc}" />
+            <img src="${imgSrc}" alt="Icone de uma lixeira para excluir um card da coluna" class="card-info--img"/>
         </div>
         `
     });
     listCard.length = 0;
-    column.innerHTML += AdicionarCardList.join('');
+    column.innerHTML += AdicionarCardList;
 };
 
-function SetButton(formulario) {
-    let filho = formulario.childNodes[1];
-    filho.style.display = "block";
+// function SetButton(formulario) {
+//     let inputTextForm = formulario.childNodes[1];
+//     let buttonForm = formulario.childNodes[3];
+//     inputTextForm.style.display = "block";
 
-    filho.addEventListener("keyup", (e) => {
-        if (e.key == "Enter") {
-            filho.style.display = "none";
-        }
-    });
-}
-
-form_card_todo.addEventListener("submit", function(event){
-    event.preventDefault();
-    SetButton(form_card_todo);
-    CriarCardToDo();
-});
-
-form_card_doing.addEventListener("submit", function(event) {
-    event.preventDefault();
-    SetButton(form_card_doing);
-    CriarCardDoing();
-})
-
-form_card_done.addEventListener("submit", function(event) {
-    event.preventDefault();
-    SetButton(form_card_done);
-    CriarCardDone();
-})
+//     inputTextForm.addEventListener("keyup", (e) => {
+//         if (e.key == "Enter") {
+//             inputTextForm.style.display = "none";
+//         }
+//     });  
+// };
 
 function CriarCardToDo() {
     let value_card_input_todo = window.document.getElementById("input_card_todo");
@@ -60,7 +41,8 @@ function CriarCardToDo() {
     if (card_progress_input_todo != "") {
         AdicionarCard(card_progress_input_todo, columnTodo);
         value_card_input_todo.value = '';
-    } 
+        value_card_input_todo.style.display = "none";
+    }
 };
 
 function CriarCardDoing() {
@@ -69,9 +51,10 @@ function CriarCardDoing() {
 
     if (card_progress_input_doing != '') {
         AdicionarCard(card_progress_input_doing, columnDoing);
-        card_progress_input_doing.value = '';
+        card_input_doing.value = '';
+        card_input_doing.style.display = "none";
     }
-}
+};
 
 function CriarCardDone() {
     let card_input_done = window.document.getElementById("input_card_done");
@@ -80,5 +63,53 @@ function CriarCardDone() {
     if (card_progress_input_done != '') {
         AdicionarCard(card_progress_input_done, columnDone);
         card_input_done.value = '';
+        card_input_done.style.display = "none";
     }
-}
+};
+
+
+function deleterImagen(conteiner) {
+    let cardInfoImg = conteiner.querySelectorAll(".card-info--img");
+    for (let i = 0; i < conteiner.children.length; i++) {
+        cardInfoImg[i].addEventListener("click", () => {
+            let divCardInfo = cardInfoImg[i].parentElement;
+            divCardInfo.remove();
+        });
+    };
+};
+
+form_card_todo.addEventListener("submit", function(event){
+    event.preventDefault();
+    // SetButton(form_card_todo);
+    let inputTextForm = form_card_todo.childNodes[1];
+    inputTextForm.style.display = "block";
+    CriarCardToDo();
+});
+
+form_card_doing.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let inputTextForm = form_card_doing.childNodes[1];
+    inputTextForm.style.display = "block";
+    // SetButton(form_card_doing);
+    CriarCardDoing();
+});
+
+form_card_done.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let inputTextForm = form_card_done.childNodes[1];
+    inputTextForm.style.display = "block";
+    // SetButton(form_card_done);
+    CriarCardDone();
+});
+
+columnTodo.addEventListener("mouseup", () => {
+    deleterImagen(columnTodo);
+});
+
+columnDoing.addEventListener("mouseup", () => {
+    deleterImagen(columnDoing);
+});
+
+columnDone.addEventListener("mouseup", () => {
+    deleterImagen(columnDone);
+});
