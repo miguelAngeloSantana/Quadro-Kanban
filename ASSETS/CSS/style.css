@@ -86,11 +86,11 @@ body {
     padding-top: 15px;
 }
 
-.conteiner-main .column.column-todo .add-card-todo, .column.column-doing .add-card-doing, .column.column-done .add-card-done {
+.conteiner-main .column.column-todo #add-card-todo, .column.column-doing #add-card-doing, .column.column-done #add-card-done {
     width: 85%;
 }
 
-.conteiner-main .column.column-todo .add-card-todo .card-info, .column.column-doing .add-card-doing .card-info, .column.column-done .add-card-done .card-info {
+.conteiner-main .column.column-todo #add-card-todo .card-info, .column.column-doing #add-card-doing .card-info, .column.column-done #add-card-done .card-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,11 +100,15 @@ body {
     border-radius: 10px;
 }
 
-.conteiner-main .column.column-todo .add-card-todo .card-info span, .column.column-doing .add-card-doing .card-info span, .column.column-done .add-card-done .card-info span {
+.conteiner-main .column.column-todo #add-card-todo .card-info .dragging {
+    opacity: 0.5;
+}
+
+.conteiner-main .column.column-todo #add-card-todo .card-info span, .column.column-doing #add-card-doing .card-info span, .column.column-done #add-card-done .card-info span {
     font-size: 1.6rem;
 }
 
-.conteiner-main .column.column-todo .add-card-todo .card-info img, .column.column-doing .add-card-doing .card-info img, .column.column-done .add-card-done .card-info img {
+.conteiner-main .column.column-todo #add-card-todo .card-info img, .column.column-doing #add-card-doing .card-info img, .column.column-done #add-card-done .card-info img {
     width: 16%;
     cursor: pointer;
 }

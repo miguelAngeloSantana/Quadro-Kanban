@@ -1,38 +1,56 @@
-let columnTodo = window.document.querySelector(".add-card-todo");
-let columnDoing = window.document.querySelector(".add-card-doing");
-let columnDone = window.document.querySelector(".add-card-done");
+let columnTodo = window.document.querySelector("#add-card-todo");
+let columnDoing = window.document.querySelector("#add-card-doing");
+let columnDone = window.document.querySelector("#add-card-done");
 const form_card_todo = window.document.getElementById("new_card_todo");
 const form_card_doing = window.document.getElementById("new_card_doing");
 const form_card_done = window.document.getElementById("new_card_done");
 
+let listCard = [];
+let count = 0;
+
 function AdicionarCard(vl, column) {
-    let listCard = [];
     listCard.push(vl);
     let img = document.createElement("img");
     let imgSrc = img.src="./ASSETS/imagens/remover.png";
-    let AdicionarCardList = listCard.map(function(){
+    let AdicionarCardList = listCard.map(function(vl){
         return `
-        <div class="card-info">
+        <div class="card-info" id=Count${count} draggable="true" ondragstart="dragStart(event)">
             <span>${vl}</span>
             <img src="${imgSrc}" alt="Icone de uma lixeira para excluir um card da coluna" class="card-info--img"/>
         </div>
         `
     });
+    count++;
+
     listCard.length = 0;
     column.innerHTML += AdicionarCardList;
+
+    column.addEventListener("dragover", dragOver);
+    column.addEventListener("drop", drop);
 };
 
-// function SetButton(formulario) {
-//     let inputTextForm = formulario.childNodes[1];
-//     let buttonForm = formulario.childNodes[3];
-//     inputTextForm.style.display = "block";
+function dragStart(event) {
+    event.dataTransfer.setData('text', event.target.id);
+};
 
-//     inputTextForm.addEventListener("keyup", (e) => {
-//         if (e.key == "Enter") {
-//             inputTextForm.style.display = "none";
-//         }
-//     });  
-// };
+function dragOver(event) {
+    event.preventDefault();
+};
+
+function drop(event) {
+    event.preventDefault();
+
+    const cardId = event.dataTransfer.getData('text');    
+    const card = document.getElementById(cardId);
+    const result = event.target.closest(".card-container");
+    // let card = document.querySelector(".card-info");
+
+    // const cardId = event.dataTransfer.getData('text/plain');
+    // const card = document.getElementById(cardId);
+    // const result = event.target.closest(".card-container");
+
+    result.appendChild(card);
+};
 
 function CriarCardToDo() {
     let value_card_input_todo = window.document.getElementById("input_card_todo");
@@ -80,7 +98,6 @@ function deleterImagen(conteiner) {
 
 form_card_todo.addEventListener("submit", function(event){
     event.preventDefault();
-    // SetButton(form_card_todo);
     let inputTextForm = form_card_todo.childNodes[1];
     inputTextForm.style.display = "block";
     CriarCardToDo();
@@ -90,7 +107,6 @@ form_card_doing.addEventListener("submit", function(event) {
     event.preventDefault();
     let inputTextForm = form_card_doing.childNodes[1];
     inputTextForm.style.display = "block";
-    // SetButton(form_card_doing);
     CriarCardDoing();
 });
 
@@ -98,7 +114,6 @@ form_card_done.addEventListener("submit", function(event) {
     event.preventDefault();
     let inputTextForm = form_card_done.childNodes[1];
     inputTextForm.style.display = "block";
-    // SetButton(form_card_done);
     CriarCardDone();
 });
 
