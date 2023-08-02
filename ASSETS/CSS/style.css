@@ -106,15 +106,18 @@ body {
 
 .conteiner-main .column.column-todo #add-card-todo .card-info span, .column.column-doing #add-card-doing .card-info span, .column.column-done #add-card-done .card-info span {
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .conteiner-main .column.column-todo #add-card-todo .card-info img, .column.column-doing #add-card-doing .card-info img, .column.column-done #add-card-done .card-info img {
-    width: 16%;
+    width: 12%;
+    margin-right: 13px;
+    padding: 4px 0;
     cursor: pointer;
 }
 
 .conteiner-main .column .btn-column {
-    background-color: var(--background-btn--column);
+    background-color: #000;
     margin-bottom: 20px;
 }
 
@@ -142,4 +145,21 @@ body {
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+.conteiner-main .column .radio_card {
+    display: none;
+    background-color: rgba(111, 111, 111, 0.5);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+
+}
+
+/* .conteiner-main .column .radio_card #radio {
+    color: #fff;
+} */
+
+.conteiner-main .column .radio_card #change {
+    margin-top: 15px;
 }
