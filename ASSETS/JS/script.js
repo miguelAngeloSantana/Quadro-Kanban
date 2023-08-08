@@ -4,9 +4,6 @@ const columnDone = window.document.querySelector("#add-card-done");
 const form_card_todo = window.document.getElementById("new_card_todo");
 const form_card_doing = window.document.getElementById("new_card_doing");
 const form_card_done = window.document.getElementById("new_card_done");
-let teste = window.document.querySelector(".teste");
-let teste2 = window.document.querySelector(".teste2");
-let teste3 = window.document.querySelector(".teste3");
 
 let listCard = [];
 
@@ -30,11 +27,11 @@ function AdicionarCard(vl, column) {
         //Esse evento é acionado sempre que um card é arrastado na div card-conteiner
         item.addEventListener("dragover", (e) => {
             const dragging = window.document.querySelector(".dragging"); // pegamos o item que está sendo movido
-            const apply = getPosition(item, e.clientY); // Pegamos a posição que esse está sendo movido, passando a coluna e a posição desse item em si
+            const applyPosition = getPosition(item, e.clientY); // Pegamos a posição que esse está sendo movido, passando a coluna e a posição desse item em si
 
             // Se tiver alguma posição do item, ele sera colocado depois do elemento, senão é colocado no ultima posição
-            if (apply) {
-                apply.insertAdjacentElement("afterend", dragging);
+            if (applyPosition) {
+                applyPosition.insertAdjacentElement("afterend", dragging);
             } else {
                 column.appendChild(dragging);
             }
@@ -75,89 +72,49 @@ function dragEnd(event) {
     event.target.classList.remove("dragging"); // Sempre o evento de arrastar um card é terminado, a classe dragging é remida dele
 };
 
-function CriarCardToDo() {
-    let value_card_input_todo = window.document.getElementById("input_card_todo");
-    let card_progress_input_todo = value_card_input_todo.value.trim();
-
-    if (card_progress_input_todo != "") {
-        AdicionarCard(card_progress_input_todo, columnTodo);
-        value_card_input_todo.value = '';
-        value_card_input_todo.style.display = "none";
-    }
-   
-    teste.style.display = "none";
-};
-
-function CriarCardDoing() {
-    let card_input_doing = window.document.getElementById("input_card_doing");
-    let card_progress_input_doing = card_input_doing.value.trim();
-
-    if (card_progress_input_doing != '') {
-        AdicionarCard(card_progress_input_doing, columnDoing);
-        card_input_doing.value = '';
-        card_input_doing.style.display = "none";
-    }
+function CriarCard(columnAdd, formulario) {
+    let value_card_input = formulario.childNodes[1];
+    let valueCard = value_card_input.value.trim();
+    let inputForm = formulario.childNodes[1];
+    inputForm.style.display = "block";
     
-    teste2.style.display = "none";
-    
-};
+    if(valueCard != "") {
+        AdicionarCard(valueCard, columnAdd);
+        value_card_input.value = '';
 
-function CriarCardDone() {
-    let card_input_done = window.document.getElementById("input_card_done");
-    let card_progress_input_done = card_input_done.value.trim();
-
-    if (card_progress_input_done != '') {
-        AdicionarCard(card_progress_input_done, columnDone);
-        card_input_done.value = '';
-        card_input_done.style.display = "none";
+        value_card_input.style.display = "none";
     }
-    teste3.style.display = "none";
+
+    columnAdd.childNodes[1].style.display = "none";
 };
 
 
 function deleterImagen(conteiner) {
     let cardInfoImg = conteiner.querySelectorAll(".card-info--img");
-    let t = conteiner.querySelectorAll(".card-info:not(.generico)");
+    let conteinerLength = conteiner.querySelectorAll(".card-info:not(.card-texto)");
 
-    for (let i = 0; i < t.length; i++) {
+    for (let i = 0; i < conteinerLength.length; i++) {
         cardInfoImg[i].addEventListener("click", () => {
-            let divCardInfo = cardInfoImg[i].parentElement;
-            divCardInfo.remove();
+            // let divCardInfo = cardInfoImg[i].parentElement;
+            // divCardInfo.remove();
+            cardInfoImg[i].parentElement.remove();
         });
     };
-
-    t.forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (t.length == 1) {
-                setTimeout(() => {
-                    teste.style.display = "flex";
-                    console.log(teste);
-                }, 2000);
-            }
-        });
-    });
 };
 
 form_card_todo.addEventListener("submit", function(event){
     event.preventDefault();
-    let inputTextForm = form_card_todo.childNodes[1];
-    inputTextForm.style.display = "block";
-    CriarCardToDo();
+    CriarCard(columnTodo ,form_card_todo);
 });
 
 form_card_doing.addEventListener("submit", function(event) {
     event.preventDefault();
-    let inputTextForm = form_card_doing.childNodes[1];
-    inputTextForm.style.display = "block";
-    CriarCardDoing();
+    CriarCard(columnDoing ,form_card_doing);
 });
 
 form_card_done.addEventListener("submit", function(event) {
     event.preventDefault();
-    let inputTextForm = form_card_done.childNodes[1];
-    inputTextForm.style.display = "block";
-    CriarCardDone();
+    CriarCard(columnDone ,form_card_done);
 });
 
 columnTodo.addEventListener("mouseup", () => {

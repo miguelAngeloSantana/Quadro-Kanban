@@ -1,26 +1,18 @@
 :root {
-    --background-body: #dcdcdc;
+    --background-body: #141414;
     --background-nav: #FFFAFA;
-    --background-btn: #D3D3D3;
-    --background-btn--column: #C0C0C0;
-
+    /* --background-btn: #fff; */
+    --background-btn--column: rgba(62, 58, 79, .3);
+    --background-default: #fff;
     --border-form-column: 1px solid #000;
+    --color-text--dark: #000;
 }
-
+/* #2b2c37 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-.btn {
-    cursor: pointer; 
-    padding: 15px 20px;
-    border-radius: 25px;
-    border: none;
-    background-color: var(--background-btn);
-    font-weight: bold;
-}
+} 
 
 body {
     background-color: var(--background-body);
@@ -37,13 +29,13 @@ body {
     margin-top: 8px;
     margin-bottom: 14px;
     padding: 8px 5px 0;
-    height: 60px;
+    height: 40px;
     background-color: var(--background-nav);
 }
 
 .menu nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -52,6 +44,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* flex-wrap: wrap; */
+    width: 100%;
     margin-top: 50px;
 }
 
@@ -62,7 +56,8 @@ body {
     justify-content: center;
     width: 30%;
     height: auto;
-    background-color: var(--background-nav);
+    background-color: var(--background-btn--column);
+    margin-bottom: 20px;
 }
 
 .conteiner-main .column .column--row {
@@ -76,14 +71,11 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     padding-left: 8px;
+    color: var(--background-nav);
 }
 
-.conteiner-main .column img {
+.conteiner-main .column .column--row img {
     width: 20%;
-}
-
-.conteiner-main .column.column-todo {
-    padding-top: 15px;
 }
 
 .conteiner-main .column.column-todo #add-card-todo, .column.column-doing #add-card-doing, .column.column-done #add-card-done {
@@ -95,7 +87,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 13px 0 18px 0;
-    background-color: #777;
+    background-color: var(--background-default);
     padding: 6px;
     border-radius: 10px;
 }
@@ -107,6 +99,7 @@ body {
 .conteiner-main .column.column-todo #add-card-todo .card-info span, .column.column-doing #add-card-doing .card-info span, .column.column-done #add-card-done .card-info span {
     font-size: 1.6rem;
     width: 100%;
+    color: var(--color-text--dark);
 }
 
 .conteiner-main .column.column-todo #add-card-todo .card-info img, .column.column-doing #add-card-doing .card-info img, .column.column-done #add-card-done .card-info img {
@@ -114,11 +107,6 @@ body {
     margin-right: 13px;
     padding: 4px 0;
     cursor: pointer;
-}
-
-.conteiner-main .column .btn-column {
-    background-color: #000;
-    margin-bottom: 20px;
 }
 
 .conteiner-main .column form {
@@ -133,7 +121,7 @@ body {
     padding: 7px 10px;
     border-radius: 25px;
     border: var(--border-form-column);
-    background-color: transparent;
+    background-color: var(--background-default);
     display: none;
 }
 
@@ -141,25 +129,40 @@ body {
     border-radius: 20px;
     padding: 10px 13px;
     border: var(--border-form-column);
-    background-color: var(--background-btn);
-    font-size: 0.9rem;
-    font-weight: 500;
+    background-color: var(--background-default);
+    color: var(--color-text--dark);
+    font-size: 0.95rem;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.conteiner-main .column .radio_card {
-    display: none;
-    background-color: rgba(111, 111, 111, 0.5);
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 15px;
+@media (max-width: 890px) {
+    .conteiner-main .column .card-container {
+        height: auto;
+    }
 
+    .conteiner-main .column.column-todo #add-card-todo .card-texto, .column.column-doing #add-card-doing .card-texto, .column.column-done #add-card-done .card-texto{
+        display: none;
+    }
 }
 
-/* .conteiner-main .column .radio_card #radio {
-    color: #fff;
-} */
+@media (max-width: 840px) {
+    .conteiner-main {
+        flex-direction: column;
+    }
 
-.conteiner-main .column .radio_card #change {
-    margin-top: 15px;
+    .conteiner-main .column {
+        width: 70%;
+        margin-top: 30px;
+    }
+
+    .conteiner-main .column .card-container {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .conteiner-main .column {
+        width: 100%;
+    }
 }
