@@ -7,6 +7,40 @@ const form_card_done = window.document.getElementById("new_card_done");
 
 let listCard = [];
 
+function VerificarCard() {
+    if (columnTodo.children.length == 1) {
+        let firstCrdTodo = columnTodo.childNodes[1];
+        let vlFirstCrdTodo = firstCrdTodo.childNodes[1];
+
+        firstCrdTodo.style.backgroundColor = "transparent";
+        vlFirstCrdTodo.style.color = "#FFF";
+        vlFirstCrdTodo.style.textAlign = "center";
+        vlFirstCrdTodo.style.fontSize = "20px";
+    }
+
+    if (columnDoing.children.length == 1) {
+        let firstCrdDoing = columnDoing.childNodes[1];
+        let vlFirstCrdDoing = firstCrdDoing.childNodes[1];
+
+        firstCrdDoing.style.backgroundColor = "transparent";
+        vlFirstCrdDoing.style.color = "#FFF";
+        vlFirstCrdDoing.style.textAlign = "center";
+
+        vlFirstCrdDoing.style.fontSize = "20px";
+    } 
+
+    if (columnDone.children.length == 1) {
+        let firstCrdDone = columnDone.childNodes[1];
+        let vlFirstCrdDone = firstCrdDone.childNodes[1];
+
+        firstCrdDone.style.backgroundColor = "transparent";
+        vlFirstCrdDone.style.color = "#FFF";
+        vlFirstCrdDone.style.textAlign = "center";
+
+        vlFirstCrdDone.style.fontSize = "20px";
+    } 
+};
+
 function AdicionarCard(vl, column) {
     listCard.push(vl);
     let img = document.createElement("img");
@@ -95,8 +129,6 @@ function deleterImagen(conteiner) {
 
     for (let i = 0; i < conteinerLength.length; i++) {
         cardInfoImg[i].addEventListener("click", () => {
-            // let divCardInfo = cardInfoImg[i].parentElement;
-            // divCardInfo.remove();
             cardInfoImg[i].parentElement.remove();
         });
     };
@@ -119,14 +151,26 @@ form_card_done.addEventListener("submit", function(event) {
 
 columnTodo.addEventListener("mouseup", () => {
     deleterImagen(columnTodo);
+
+    if(columnTodo.children.length == 2) {
+        columnTodo.childNodes[1].style.display = "block";
+    }
 });
 
 columnDoing.addEventListener("mouseup", () => {
     deleterImagen(columnDoing);
+
+    if (columnDoing.children.length == 2) {
+        columnDoing.childNodes[1].style.display = "block";
+    }
 });
 
 columnDone.addEventListener("mouseup", () => {
     deleterImagen(columnDone);
+
+    if (columnDone.children.length == 2) {
+        columnDone.childNodes[1].style.display = "block";
+    }
 });
 
 

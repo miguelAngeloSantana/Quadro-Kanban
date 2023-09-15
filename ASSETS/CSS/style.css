@@ -7,7 +7,7 @@
     --border-form-column: 1px solid #000;
     --color-text--dark: #000;
 }
-/* #2b2c37 */
+
 * {
     margin: 0;
     padding: 0;
@@ -44,7 +44,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* flex-wrap: wrap; */
     width: 100%;
     margin-top: 50px;
 }
@@ -123,6 +122,7 @@ body {
     border: var(--border-form-column);
     background-color: var(--background-default);
     display: none;
+    outline: none;
 }
 
 .conteiner-main .column form .btn-form {
